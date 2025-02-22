@@ -1,0 +1,19 @@
+{
+  "name": "my-contacts-backend-api",
+  "version": "1.0.0",
+  "description": "This is express project for my contacts backend api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subigya-js/contact-manager.git"
+  },
+  "author": "Subigya Subedi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/subigya-js/contact-manager/issues"
+  },
+  "homepage": "https://github.com/subigya-js/contact-manager#readme"
+}
