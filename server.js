@@ -3,6 +3,9 @@ const { errorHandler } = require("./middleware/errorHandler");
 const dotenv = require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 3000;
+const connectDb = require("./config/dbConnection");
+
+connectDb();
 
 // Middleware for parsing JSON data (POST Request)
 app.use(express.json());
