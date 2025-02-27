@@ -5,7 +5,26 @@ const User = require("../models/userModel");
 //@route POST /api/users/register
 //@access public
 const registerUser = asyncHandler(async (req, res) => {
-  res.json({ message: "Register the User" });
+  const { username, email, password } = req.body;
+
+  if (!username || !email || !password) {
+    res.status(400);
+    throw new Error("Please fill all the fields");
+  }
+
+  const userAvailable = await User.create({
+    username,
+    email,
+    password,
+  });
+
+  if (userAvailable) {
+    res.status(400);
+    throw new Error("User already exists.");
+  }
+
+  console.log("User created successfully.");
+  res.status(201).json({ user });
 });
 
 // @desc Login a user
