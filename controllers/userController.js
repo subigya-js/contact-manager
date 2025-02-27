@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
+const bcrypt = require("bcryptjs");
 
 //@desc Register a new user
 //@route POST /api/users/register
@@ -12,10 +13,14 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("Please fill all the fields");
   }
 
-  const userAvailable = await User.create({
+  const userAvailable = await User.findOne({ email });
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  const user = await User.create({
     username,
     email,
-    password,
+    password: hashedPassword,
   });
 
   if (userAvailable) {
