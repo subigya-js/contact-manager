@@ -15,6 +15,11 @@ const registerUser = asyncHandler(async (req, res) => {
 
   const userAvailable = await User.findOne({ email });
 
+  if (userAvailable) {
+    res.status(400);
+    throw new Error("User already exists.");
+  }
+
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const user = await User.create({
@@ -23,13 +28,17 @@ const registerUser = asyncHandler(async (req, res) => {
     password: hashedPassword,
   });
 
-  if (userAvailable) {
+  if (user) {
+    res.status(201).json({
+      _id: user._id,
+      email: user.email,
+    });
+  } else {
     res.status(400);
-    throw new Error("User already exists.");
+    throw new Error("Invalid user data.");
   }
 
-  console.log("User created successfully.");
-  res.status(201).json({ user });
+  res.json({ message: "Register a new User" });
 });
 
 // @desc Login a user
