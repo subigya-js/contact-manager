@@ -1,82 +1,89 @@
-# My Contacts Backend API
+# Contact Manager API
 
-This is an Express.js project for a contacts management backend API.
-
-## Description
-
-My Contacts Backend API is a RESTful service that allows users to manage their contacts. It provides endpoints for creating, reading, updating, and deleting contact information.
+This is a RESTful API for managing contacts, built with Node.js, Express, and MongoDB.
 
 ## Features
 
+- User authentication (signup, login)
 - CRUD operations for contacts
-- Express.js server
-- MongoDB database integration
+- JWT-based authentication
 - Error handling middleware
+- MongoDB database integration
 
-## Technologies Used
+## Project Structure
 
-- Node.js
-- Express.js
+```
+contact-manager/
+│
+├── config/
+│   └── dbConnection.js
+├── controllers/
+│   ├── contactController.js
+│   └── userController.js
+├── middleware/
+│   ├── errorHandler.js
+│   └── validateTokenHandler.js
+├── models/
+│   ├── contactModel.js
+│   └── userModel.js
+├── routes/
+│   ├── contactRoutes.js
+│   └── userRoutes.js
+├── .env
+├── .gitignore
+├── constants.js
+├── package.json
+├── server.js
+└── README.md
+```
+
+## Prerequisites
+
+- Node.js (v14 or later recommended)
 - MongoDB
-- Mongoose
-- dotenv (for environment variables)
-- express-async-handler (for handling asynchronous errors)
 
 ## Installation
 
 1. Clone the repository:
    ```
    git clone https://github.com/subigya-js/contact-manager.git
-   ```
-2. Navigate to the project directory:
-   ```
    cd contact-manager
    ```
-3. Install dependencies:
+
+2. Install dependencies:
    ```
    npm install
    ```
-4. Create a `.env` file in the root directory and add your MongoDB connection string:
+
+3. Create a `.env` file in the root directory and add the following environment variables:
    ```
+   PORT=3001
    MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
    ```
-
-## Configuration
-
-The application uses environment variables for configuration. Create a `.env` file in the root directory with the following variables:
-
-```
-PORT=3000 # or your preferred port
-MONGODB_URI=your_mongodb_connection_string
-```
 
 ## Usage
 
-To start the server in development mode:
+1. Start the server:
+   ```
+   npm start
+   ```
 
-```
-npm run dev
-```
-
-To start the server in production mode:
-
-```
-npm start
-```
-
-The server will start on the port specified in your `.env` file (default is 3000).
+2. The API will be available at `http://localhost:3001` (or the port you specified in the .env file)
 
 ## API Endpoints
 
-The API provides the following endpoints:
+### User Routes
+- POST /api/users/register - Register a new user
+- POST /api/users/login - Login user
+- GET /api/users/current - Get current user info (protected route)
 
-- `GET /api/contacts` - Get all contacts
-- `POST /api/contacts` - Create a new contact
-- `GET /api/contacts/:id` - Get a specific contact by ID
-- `PUT /api/contacts/:id` - Update a specific contact by ID
-- `DELETE /api/contacts/:id` - Delete a specific contact by ID
-
-Note: Replace `/api/contacts` with the actual base path of your API if it's different.
+### Contact Routes
+- GET /api/contacts - Get all contacts (protected route)
+- POST /api/contacts - Create a new contact (protected route)
+- GET /api/contacts/:id - Get a specific contact (protected route)
+- PUT /api/contacts/:id - Update a contact (protected route)
+- DELETE /api/contacts/:id - Delete a contact (protected route)
 
 ## Contributing
 
