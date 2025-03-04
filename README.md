@@ -1,6 +1,6 @@
 # Contact Manager API
 
-This is a RESTful API for managing contacts, built with Node.js, Express, and MongoDB.
+A robust RESTful API for managing contacts, built with Node.js, Express, and MongoDB.
 
 ## Features
 
@@ -74,21 +74,46 @@ contact-manager/
 ## API Endpoints
 
 ### User Routes
-- POST /api/users/register - Register a new user
-- POST /api/users/login - Login user
-- GET /api/users/current - Get current user info (protected route)
+- `POST /api/users/register` - Register a new user
+- `POST /api/users/login` - Login user
+- `GET /api/users/current` - Get current user info (protected route)
 
 ### Contact Routes
-- GET /api/contacts - Get all contacts (protected route)
-- POST /api/contacts - Create a new contact (protected route)
-- GET /api/contacts/:id - Get a specific contact (protected route)
-- PUT /api/contacts/:id - Update a contact (protected route)
-- DELETE /api/contacts/:id - Delete a contact (protected route)
+- `GET /api/contacts` - Get all contacts (protected route)
+- `POST /api/contacts` - Create a new contact (protected route)
+- `GET /api/contacts/:id` - Get a specific contact (protected route)
+- `PUT /api/contacts/:id` - Update a contact (protected route)
+- `DELETE /api/contacts/:id` - Delete a contact (protected route)
+
+## Error Handling
+
+The API uses a centralized error handling mechanism. The `errorHandler` middleware in `middleware/errorHandler.js` catches all errors and sends appropriate error responses.
+
+## Authentication
+
+JWT (JSON Web Tokens) are used for authentication. The `validateTokenHandler` middleware in `middleware/validateTokenHandler.js` verifies the token for protected routes.
+
+## Database
+
+This project uses MongoDB as the database. The connection is managed in `config/dbConnection.js`.
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
 ## License
 
 This project is licensed under the MIT License.
+
+## Acknowledgements
+
+- [Express.js](https://expressjs.com/)
+- [Mongoose](https://mongoosejs.com/)
+- [JSON Web Tokens](https://jwt.io/)
+- [bcrypt](https://github.com/kelektiv/node.bcrypt.js)
