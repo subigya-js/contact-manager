@@ -97,6 +97,10 @@ JWT (JSON Web Tokens) are used for authentication. The `validateTokenHandler` mi
 
 This project uses MongoDB as the database. The connection is managed in `config/dbConnection.js`.
 
+## Documentation
+
+Detailed documentation for this project can be found [here](https://docs.google.com/document/d/1EutIpSqzdE7nvemEY3Qe5BlAD7aYEXhOxC2B9Nbnri4/edit?usp=sharing). This documentation provides in-depth information about the project structure, API endpoints, authentication process, and more.
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -117,3 +121,7 @@ This project is licensed under the MIT License.
 - [Mongoose](https://mongoosejs.com/)
 - [JSON Web Tokens](https://jwt.io/)
 - [bcrypt](https://github.com/kelektiv/node.bcrypt.js)
+
+## Conclusion
+
+This Contact Manager API provides a solid foundation for managing contacts with user authentication. It demonstrates best practices in Node.js API development, including proper route handling, middleware usage, and database integration. The project is now concluded, but feel free to extend its functionality or use it as a starting point for your own projects.
